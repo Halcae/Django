@@ -1,9 +1,267 @@
-{% if medalhas %}
-<ul>
-	{% for xablau in medalhas %}
-		<li><img src="/media/{{ xablau.icone }}" /></li>
-	{% endfor %}
-</ul>
-{% else %}
-<p>No polls are available.</p>
-{% endif %}
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enterprise University</title>
+  {% load staticfiles %}
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/css/foundation.css' %}" />
+</head>
+<body>
+
+  <div class="off-canvas-wrapper"><!-- A  -->
+    <div class="off-canvas-wrapper-inner" data-off-canvas-wrapper><!-- B  -->
+
+      <!-- PERFIL -->
+      <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left"><!-- C  -->
+        <div class="row column"><!-- D  -->
+          <br>
+          <a href="index.html"><img class="thumbnail" src="{% static "polls/images/avatar.jpg" %}"></a>
+          <div data-tooltip aria-haspopup="true" class="carac-user" data-disable-hover='false' tabindex=1 title="Nome">
+            <p><img class="logo_svg" src="svg/cowled.svg" alt="cowled">&nbsp;&nbsp;H.P Lovecraft</p>
+          </div>
+
+          <div data-tooltip aria-haspopup="true" class="carac-user" data-disable-hover='false' tabindex=1 title="Level">
+            <p><img class="logo_svg" src="svg/beams-aura.svg" alt="beams-aura">&nbsp;&nbsp;Level 66</p>
+          </div>
+
+          <div data-tooltip aria-haspopup="true" class="carac-user" data-disable-hover='false' tabindex=1 title="Gold">
+            <p><img class="logo_svg" src="svg/gold-bar.svg" alt="beams-aura">&nbsp;&nbsp;1254 Gold</p>
+          </div>
+
+          <div data-tooltip aria-haspopup="true" class="carac-user" data-disable-hover='false' tabindex=1 title="Barra de Experiencia">
+            <div class="success progress"><!-- E  -->
+              <div class="progress-meter-text">
+                10XP
+              </div>
+              <div class="progress-meter" style="width: 10%"><!-- F  -->
+              </div><!-- F  -->
+
+            </div><!-- E  -->
+          </div>
+
+
+          <hr>
+
+          <a href="medalhas.html" class="expanded button primary">Medalhas</a>
+          <a href="cursos.html" class="expanded button alert">Cursos</a>
+          <a href="ranking.html" class="expanded button success">Ranking</a>
+
+          <a data-open="exampleModal1" class="expanded button warning">Sobre</a>
+
+          <div class="reveal" id="exampleModal1" data-reveal><!-- G  -->
+            <h3>Bem vindo ao Enterprise University</h3>
+            <p class="lead">Aqui você vai encontrar todos os cursos e treinamentos para elevar sua carreira dentro da empresa.</p>
+            <p>Nossos cursos são selecionados e focados na evolucão da sua carreira</p><br>
+            O que você encontra no Enterprise University ?<br><br>
+            - Nível: Suba de nivel ganhando experiência.<br>
+            - Pontos de Experiência: Ganhe pontos finalizando cursos e respondendo os questionarios corretamente.<br>
+            - Gold: Troque o Gold por prêmios reais.<br>
+            - Ranking: Suba no Ranking e fique no topo.<br>
+
+            <button class="close-button" data-close aria-label="Close reveal" type="button">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div><!-- G  -->
+
+
+
+        </div><!-- D  -->
+      </div><!-- C  -->
+
+      <!-- TOPO LARGE -->
+      <div class="off-canvas-content" data-off-canvas-content><!-- H  -->
+        <div class="title-bar hide-for-large"><!-- I  -->
+          <div class="title-bar-left"><!-- J  -->
+            <button class="menu-icon" type="button" data-open="my-info"></button>
+            <a href="index.html">
+              <img class="logo_svg" src="svg/curled-tentacle.svg" alt="logo">
+
+              <span class="title-bar-title">Enterprise University</span>
+            </a>
+
+          </div><!-- J  -->
+
+        </div><!-- I  -->
+
+
+
+        <!-- TOPO SMALL-->
+        <div class="title-bar hide-for-small-only hide-for-medium-only"><!-- K  -->
+          <div class="title-bar-left"><!-- L  -->
+            <a class="logo" href="index.html">
+              <img class="logo_svg" src="svg/curled-tentacle.svg" alt="logo">
+
+              <span class="title-bar-title ">Enterprise University</span>
+            </a>
+          </div><!-- L  -->
+        </div><!-- K  -->
+        <!-- <hr> HAC -->
+        <div class="row"><!-- M  -->
+          <div class="column" align="center"><!-- N  -->
+            <div class="callout" ><!-- O  -->
+
+
+
+              <div class="alert-box primary"><!-- P  -->
+                <p class="text-center">Medalhas</p>
+              </div><!-- P  -->
+
+
+
+
+              <!--<p><img src="images/small.jpg" alt="image of a planet called Pegasi B"></p>-->
+              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Thunder Struck">
+                <img class="badge_svg" src="svg/thunder-struck.svg" alt="thunder-struck">
+              </span>
+              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Magic Lamp">
+                <img class="badge_svg" src="svg/magic-lamp.svg" alt="magic-lamp">
+              </span>
+              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Twister">
+                <img class="badge_svg" src="svg/twister.svg" alt="twister">
+              </span>
+              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Mounted Knight">
+                <img class="badge_svg" src="svg/mounted-knight.svg" alt="mounted-knight">
+              </span>
+              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Totem">
+                <img class="badge_svg" src="svg/totem.svg" alt="totem">
+              </span>
+              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Cryo Chamber">
+                <img class="badge_svg" src="svg/cryo-chamber.svg" alt="cryo-chamber">
+              </span>
+              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Rolling Dices">
+                <img class="badge_svg" src="svg/rolling-dices.svg" alt="rolling-dices">
+              </span>
+              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Drakkar">
+                <img class="badge_svg" src="svg/drakkar.svg" alt="drakkar">
+              </span>
+              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Wolf Head">
+                <img class="badge_svg" src="svg/wolf-head.svg" alt="wolf-head">
+              </span>
+              <br><br>
+              <a href="medalhas.html" class="expanded button primary">Todas suas medalhas!</a>
+            </div><!-- O  -->
+          </div><!-- N  -->
+          <div class="column"><!-- Q  -->
+            <div class="callout"><!-- R  -->
+              <div class="alert-box alert"><!-- A1  -->
+                <p class="text-center">Cursos Finalizados</p>
+              </div>
+              <table>
+                <thead>
+                  <tr>
+                    <th>Curso</th>
+                    <th>Pontuacao</th>
+                    <th>Badges</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a>Java</a></td>
+                    <td>150 XP</td>
+                    <td>2 Badges</td>
+                  </tr>
+                  <tr>
+                    <td><a>Python</a></td>
+                    <td>140 XP</td>
+                    <td>1 Badge</td>
+                  </tr>
+                  <tr>
+                    <td><a>C#</a></td>
+                    <td>140 XP</td>
+                    <td>1 Badge</td>
+                  </tr>
+                  <tr>
+                    <td><a>C#</a></td>
+                    <td>140 XP</td>
+                    <td>1 Badge</td>
+                  </tr>
+                  <tr>
+                    <td><a>C#</a></td>
+                    <td>140 XP</td>
+                    <td>1 Badge</td>
+                  </tr>
+                  <tr>
+                    <td><a>C#</a></td>
+                    <td>140 XP</td>
+                    <td>1 Badge</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a href="cursos.html" class="expanded button alert">Explore Mais Cursos!</a>
+            </div><!-- R  -->
+          </div><!-- Q  -->
+          <div class="column"><!-- T  -->
+            <div class="callout"><!-- S  -->
+              <div class="alert-box success">
+                <p class="text-center">Ranking</p>
+              </div><!--<p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>-->
+              <table>
+                <thead>
+                  <tr>
+                    <th>Posicao</th>
+                    <th>Nome</th>
+                    <th>Level</th>
+                    <th>XP</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>1</td>
+                    <td>H.P Lovecraft</td>
+                    <td>66</td>
+                    <td>50</td>
+                  </tr>
+                  <tr>
+                    <td>2</td>
+                    <td>Stephen King</td>
+                    <td>65</td>
+                    <td>45</td>
+                  </tr>
+                  <tr>
+                    <td>3</td>
+                    <td>Edgar Alan Poe</td>
+                    <td>60</td>
+                    <td>78</td>
+                  </tr>
+                  <tr>
+                    <td>4</td>
+                    <td>Alan Moore</td>
+                    <td>59</td>
+                    <td>14</td>
+                  </tr>
+                  <tr>
+                    <td>5</td>
+                    <td>Neil Gaiman</td>
+                    <td>45</td>
+                    <td>74</td>
+                  </tr>
+                  <tr>
+                    <td>6</td>
+                    <td>Richard Garfield</td>
+                    <td>45</td>
+                    <td>56</td>
+                  </tr>
+                </tbody>
+              </table>
+              <a href="ranking.html" class="expanded button success">Confira o Ranking Completo!</a>
+            </div><!-- S  -->
+          </div><!-- T  -->
+          <hr>
+        </div><!-- M  -->
+      
+      <footer>
+        <h5 class="text-center">Enterprise University &copy;</h5>
+      </footer>
+      </div><!-- H  -->
+    </div><!-- B  -->
+  </div><!-- A  -->
+
+
+
+  <script src="js/vendor/jquery.js"></script>
+  <script src="js/vendor/what-input.js"></script>
+  <script src="js/vendor/foundation.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

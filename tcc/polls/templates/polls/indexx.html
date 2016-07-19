@@ -1,0 +1,9 @@
+{% if medalhas %}
+<ul>
+	{% for xablau in medalhas %}
+		<li><img src="/media/{{ xablau.icone }}" /></li>
+	{% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
