@@ -1,0 +1,1 @@
+{"virtualbox":{"project":{"create":false,"owner":null,"group":null,"nfs":false,"transient":false,"extra":null,"id":"project","guestpath":"D:devDjango_guide","hostpath":"D:/dev/Django_guide","disabled":false,"__vagrantfile":true}}}
