@@ -18,7 +18,7 @@ class Curso(models.Model):
 
 class Medalha(models.Model):
 	nome = models.CharField(max_length=200)
-	icone = models.FileField(null=True, blank=True)
+	icone = models.FileField(upload_to='medalhas')
 	def __str__(self):
 		return self.nome
 

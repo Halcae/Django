@@ -1,11 +1,17 @@
 from django.http import HttpResponse
+from django.views.generic.list import ListView
 
 from .models import Usuario, Curso, Medalha, Usuario_Curso, Usuario_Medalha, Curso_Medalha
 
 
-def index(request):
-    latest_user_list = Medalha.objects.order_by('-nome')[:5]
-    output = ', '.join([q.nome for q in latest_user_list])
-    return HttpResponse(output)
+class ListaMedalhasView(ListView):
+    template_name = 'polls/index.html'
 
-#Trocando q.nome para q.icone da erro
+    def get_queryset(self):
+        return Medalha.objects.order_by('-nome')
+
+    def get_context_data(self, **kwargs):
+        context = super(ListaMedalhasView, self).get_context_data(**kwargs)
+
+        context.update({'medalhas': self.get_queryset()[:5]})
+        return context
