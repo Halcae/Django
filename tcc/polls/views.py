@@ -15,3 +15,17 @@ class ListaMedalhasView(ListView):
 
         context.update({'medalhas': self.get_queryset()[:5]})
         return context
+
+
+class AvatarUsuario(ListView):
+    template_name = 'polls/index.html'
+
+    def get_queryset(self):
+        return Usuario.objects().order_by('-nome')
+
+    def get_context_data(self, **kwargs):
+        context = super(AvatarUsuario, self).get_context_data(**kwargs)
+
+        context.update({'usuarios': self.get_queryset()[:5]})
+        return context
+

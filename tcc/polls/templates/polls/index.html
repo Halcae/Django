@@ -1,10 +1,10 @@
+{% load staticfiles %}
 <!doctype html>
 <html class="no-js" lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Enterprise University</title>
-  {% load staticfiles %}
   <link rel="stylesheet" type="text/css" href="{% static 'polls/css/foundation.css' %}" />
 </head>
 <body>
@@ -16,10 +16,18 @@
       <div class="off-canvas position-left reveal-for-large" id="my-info" data-off-canvas data-position="left"><!-- C  -->
         <div class="row column"><!-- D  -->
           <br>
-          <a href="index.html"><img class="thumbnail" src="{% static "polls/images/avatar.jpg" %}"></a>
+          
+          <a href="index.html">
+          {% for x in usuarios %}
+                <img class="thumbnail" src="/media/{{ x.avatar }}">
+          {% empty %}
+              <li>Nao existe Imagem</li>
+          {% endfor %}
+          </a>
           <div data-tooltip aria-haspopup="true" class="carac-user" data-disable-hover='false' tabindex=1 title="Nome">
             <p><img class="logo_svg" src="svg/cowled.svg" alt="cowled">&nbsp;&nbsp;H.P Lovecraft</p>
           </div>
+          
 
           <div data-tooltip aria-haspopup="true" class="carac-user" data-disable-hover='false' tabindex=1 title="Level">
             <p><img class="logo_svg" src="svg/beams-aura.svg" alt="beams-aura">&nbsp;&nbsp;Level 66</p>
@@ -249,16 +257,23 @@
           </div><!-- T  -->
           <hr>
         </div><!-- M  -->
-      
-      <footer>
-        <h5 class="text-center">Enterprise University &copy;</h5>
-      </footer>
+
+        <footer>
+          <h5 class="text-center">Enterprise University &copy;</h5>
+        </footer>
       </div><!-- H  -->
     </div><!-- B  -->
   </div><!-- A  -->
 
-
-
+{% if usuarios %}
+<ul>
+  {% for xablau in usuarios %}
+    <li><img src="/media/{{ xablau.avatar }}" /></li>
+  {% endfor %}
+</ul>
+{% else %}
+<p>No polls are available.</p>
+{% endif %}
   <script src="js/vendor/jquery.js"></script>
   <script src="js/vendor/what-input.js"></script>
   <script src="js/vendor/foundation.js"></script>

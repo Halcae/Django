@@ -5,6 +5,7 @@ class Usuario(models.Model):
     nivel = models.IntegerField(default=1)
     pontos = models.IntegerField(default=0)
     experiencia = models.IntegerField(default=0)
+    avatar = models.FileField(upload_to='usuarios')
     def __str__(self):
         return self.nome
 
