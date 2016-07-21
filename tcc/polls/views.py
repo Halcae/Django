@@ -1,5 +1,6 @@
 from django.http import HttpResponse
 from django.views.generic.list import ListView
+from django.views.generic.base import RedirectView, TemplateView
 
 from .models import Usuario, Curso, Medalha, Usuario_Curso, Usuario_Medalha, Curso_Medalha
 
@@ -16,15 +17,18 @@ class ListaMedalhasView(ListView):
         context.update({'medalhas': self.get_queryset()[:5]})
         return context
 
-
-class AvatarUsuario(ListView):
+class HomeView(TemplateView):
     template_name = 'polls/index.html'
 
-    def get_queryset(self):
-        return Usuario.objects.order_by('-nome')
-
     def get_context_data(self, **kwargs):
-        context = super(AvatarUsuario, self).get_context_data(**kwargs)
+        context = super(HomeView, self).get_context_data(**kwargs)
 
-        context.update({'usuarios': self.get_queryset()[:5]})
+        usuario = Usuario.objects.get(system_user=self.request.user)
+        medalhas = Usuario_Medalha.objects.filter(usuario=usuario)
+
+        context.update({'usuario': usuario, 'medalhas': medalhas})
         return context
+
+class HomeRedirectView(RedirectView):
+    def get_redirect_url(self, *args, **kwargs):
+        return '/home'

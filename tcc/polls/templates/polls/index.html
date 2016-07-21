@@ -18,31 +18,31 @@
           <br>
           
           <a href="index.html">
-          {% for x in usuarios %}
-                <img class="thumbnail" src="/media/{{ x.avatar }}">
-          {% empty %}
-              <li>XABLAu</li>
-          {% endfor %}
+            {% if usuario %}
+            <img class="thumbnail" src="/media/{{ usuario.avatar }}"/>
+            {% else %}
+            <p>usuario errado</p>
+            {% endif %}
           </a>
           <div data-tooltip aria-haspopup="true" class="carac-user" data-disable-hover='false' tabindex=1 title="Nome">
-            <p><img class="logo_svg" src="svg/cowled.svg" alt="cowled">&nbsp;&nbsp;H.P Lovecraft</p>
+            <p><img class="logo_svg" src="{% static 'polls/svg/cowled.svg' %}" alt="cowled">&nbsp;&nbsp;{{ usuario.nome }}</p>
           </div>
           
 
           <div data-tooltip aria-haspopup="true" class="carac-user" data-disable-hover='false' tabindex=1 title="Level">
-            <p><img class="logo_svg" src="svg/beams-aura.svg" alt="beams-aura">&nbsp;&nbsp;Level 66</p>
+            <p><img class="logo_svg" src="{% static 'polls/svg/beams-aura.svg' %}" alt="beams-aura">&nbsp;&nbsp;Level {{ usuario.nivel }}</p>
           </div>
 
           <div data-tooltip aria-haspopup="true" class="carac-user" data-disable-hover='false' tabindex=1 title="Gold">
-            <p><img class="logo_svg" src="svg/gold-bar.svg" alt="beams-aura">&nbsp;&nbsp;1254 Gold</p>
+            <p><img class="logo_svg" src="{% static 'polls/svg/gold-bar.svg' %}" alt="beams-aura">&nbsp;&nbsp;{{usuario.pontos}} Points</p>
           </div>
 
           <div data-tooltip aria-haspopup="true" class="carac-user" data-disable-hover='false' tabindex=1 title="Barra de Experiencia">
             <div class="success progress"><!-- E  -->
               <div class="progress-meter-text">
-                10XP
+                {{usuario.experiencia}}XP
               </div>
-              <div class="progress-meter" style="width: 10%"><!-- F  -->
+              <div class="progress-meter" style="width: {{usuario.experiencia}}%"><!-- F  -->
               </div><!-- F  -->
 
             </div><!-- E  -->
@@ -83,13 +83,17 @@
           <div class="title-bar-left"><!-- J  -->
             <button class="menu-icon" type="button" data-open="my-info"></button>
             <a href="index.html">
-              <img class="logo_svg" src="svg/curled-tentacle.svg" alt="logo">
+              <img class="logo_svg" src="{% static 'polls/svg/curled-tentacle.svg' %}" alt="logo">
 
               <span class="title-bar-title">Enterprise University</span>
             </a>
 
           </div><!-- J  -->
-
+          <div class="float-right">
+            <a href="/accounts/logout/">
+              Logout
+            </a>
+          </div>
         </div><!-- I  -->
 
 
@@ -98,11 +102,16 @@
         <div class="title-bar hide-for-small-only hide-for-medium-only"><!-- K  -->
           <div class="title-bar-left"><!-- L  -->
             <a class="logo" href="index.html">
-              <img class="logo_svg" src="svg/curled-tentacle.svg" alt="logo">
+              <img class="logo_svg" src="{% static 'polls/svg/curled-tentacle.svg' %}" alt="logo">
 
               <span class="title-bar-title ">Enterprise University</span>
             </a>
           </div><!-- L  -->
+          <div class="float-right">
+            <a href="/accounts/logout/">
+              Logout
+            </a>
+          </div>
         </div><!-- K  -->
         <!-- <hr> HAC -->
         <div class="row"><!-- M  -->
@@ -115,37 +124,12 @@
                 <p class="text-center">Medalhas</p>
               </div><!-- P  -->
 
-
-
-
-              <!--<p><img src="images/small.jpg" alt="image of a planet called Pegasi B"></p>-->
-              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Thunder Struck">
-                <img class="badge_svg" src="svg/thunder-struck.svg" alt="thunder-struck">
-              </span>
-              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Magic Lamp">
-                <img class="badge_svg" src="svg/magic-lamp.svg" alt="magic-lamp">
-              </span>
-              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Twister">
-                <img class="badge_svg" src="svg/twister.svg" alt="twister">
-              </span>
-              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Mounted Knight">
-                <img class="badge_svg" src="svg/mounted-knight.svg" alt="mounted-knight">
-              </span>
-              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Totem">
-                <img class="badge_svg" src="svg/totem.svg" alt="totem">
-              </span>
-              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Cryo Chamber">
-                <img class="badge_svg" src="svg/cryo-chamber.svg" alt="cryo-chamber">
-              </span>
-              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Rolling Dices">
-                <img class="badge_svg" src="svg/rolling-dices.svg" alt="rolling-dices">
-              </span>
-              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Drakkar">
-                <img class="badge_svg" src="svg/drakkar.svg" alt="drakkar">
-              </span>
-              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="Wolf Head">
-                <img class="badge_svg" src="svg/wolf-head.svg" alt="wolf-head">
-              </span>
+              {% for m in medalhas %}
+              <span data-tooltip aria-haspopup="true" class="has-tip" data-disable-hover='false' tabindex=1 title="{{ m.medalha.nome }}">
+                <img class="badge_svg" src="/media/{{m.medalha.icone}}"/>
+              </span>  
+              {% endfor %}
+              
               <br><br>
               <a href="medalhas.html" class="expanded button primary">Todas suas medalhas!</a>
             </div><!-- O  -->
@@ -265,18 +249,9 @@
     </div><!-- B  -->
   </div><!-- A  -->
 
-{% if medalhas %}
-<ul>
-  {% for xablau in medalhas %}
-    <li><img src="/media/{{ xablau.icone }}" /></li>
-  {% endfor %}
-</ul>
-{% else %}
-<p>No polls are available.</p>
-{% endif %}
-  <script src="js/vendor/jquery.js"></script>
-  <script src="js/vendor/what-input.js"></script>
-  <script src="js/vendor/foundation.js"></script>
-  <script src="js/app.js"></script>
+  <script src="{% static 'polls/js/vendor/jquery.js' %}"></script>
+  <script src="{% static 'polls/js/vendor/what-input.js' %}"></script>
+  <script src="{% static 'polls/js/vendor/foundation.js' %}"></script>
+  <script src="{% static 'polls/js/app.js' %}"></script>
 </body>
 </html>

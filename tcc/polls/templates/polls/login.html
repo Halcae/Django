@@ -1,0 +1,21 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form method="post" action="/accounts/login/">
+        {% csrf_token %}
+        <label>login:</label>
+        <input type="text" name="username"/>
+        <label>senha:</label>
+        <input type="password" name="password"/>
+        <input type="submit" value="Logar"/>
+        {% if form.errors %}
+            <label>Acesso Negado!</label>
+        {% endif %}
+    </form>
+</body>
+</html>
