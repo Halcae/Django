@@ -21,7 +21,7 @@
           {% for x in usuarios %}
                 <img class="thumbnail" src="/media/{{ x.avatar }}">
           {% empty %}
-              <li>Nao existe Imagem</li>
+              <li>XABLAu</li>
           {% endfor %}
           </a>
           <div data-tooltip aria-haspopup="true" class="carac-user" data-disable-hover='false' tabindex=1 title="Nome">
@@ -265,10 +265,10 @@
     </div><!-- B  -->
   </div><!-- A  -->
 
-{% if usuarios %}
+{% if medalhas %}
 <ul>
-  {% for xablau in usuarios %}
-    <li><img src="/media/{{ xablau.avatar }}" /></li>
+  {% for xablau in medalhas %}
+    <li><img src="/media/{{ xablau.icone }}" /></li>
   {% endfor %}
 </ul>
 {% else %}
