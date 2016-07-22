@@ -28,7 +28,6 @@
             <p><img class="logo_svg" src="{% static 'polls/svg/cowled.svg' %}" alt="cowled">&nbsp;&nbsp;{{ usuario.nome }}</p>
           </div>
           
-
           <div data-tooltip aria-haspopup="true" class="carac-user" data-disable-hover='false' tabindex=1 title="Level">
             <p><img class="logo_svg" src="{% static 'polls/svg/beams-aura.svg' %}" alt="beams-aura">&nbsp;&nbsp;Level {{ usuario.nivel }}</p>
           </div>
@@ -39,10 +38,11 @@
 
           <div data-tooltip aria-haspopup="true" class="carac-user" data-disable-hover='false' tabindex=1 title="Barra de Experiencia">
             <div class="success progress"><!-- E  -->
-              <div class="progress-meter-text">
-                {{usuario.experiencia}}XP
-              </div>
+              
               <div class="progress-meter" style="width: {{usuario.experiencia}}%"><!-- F  -->
+                <div class="progress-meter-text">
+                  {{usuario.experiencia}}XP
+                </div>
               </div><!-- F  -->
 
             </div><!-- E  -->

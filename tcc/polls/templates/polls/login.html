@@ -1,21 +1,42 @@
 {% load staticfiles %}
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html class="no-js" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Enterprise University</title>
+  <link rel="stylesheet" type="text/css" href="{% static 'polls/css/foundation.css' %}" />
 </head>
 <body>
-    <form method="post" action="/accounts/login/">
-        {% csrf_token %}
-        <label>login:</label>
-        <input type="text" name="username"/>
-        <label>senha:</label>
-        <input type="password" name="password"/>
-        <input type="submit" value="Logar"/>
-        {% if form.errors %}
-            <label>Acesso Negado!</label>
-        {% endif %}
-    </form>
+    <div class="row">
+
+        <div class="medium-6 medium-centered large-4 large-centered columns">
+        <h5 align="center">Enterprise University</h5>
+        
+            <div class="callout">
+                <form method="post" action="/accounts/login/">
+                    <div class="row">
+                        <div class="small-12 columns">
+                            {% csrf_token %}
+                            <label>login:
+                                <input type="text" name="username"/>
+                            </label>
+                        </div>
+                        <div class="small-12 columns">
+                            <label>senha:
+                                <input type="password" name="password"/>
+                            </label>
+                            <input class="button" type="submit" value="Logar"/>
+                        </div>
+                    </div>
+                    {% if form.errors %}
+                    <label>Acesso Negado!</label>
+                    {% endif %}
+                </form>
+            </div>
+        </div>
+    </div>
+
+
 </body>
 </html>
