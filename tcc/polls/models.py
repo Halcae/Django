@@ -7,6 +7,7 @@ class Usuario(models.Model):
     pontos = models.IntegerField(default=0)
     experiencia = models.IntegerField(default=0)
     avatar = models.FileField(upload_to='usuarios')
+    primeiro_acesso = models.BooleanField(default=False)
     system_user = models.ForeignKey(User, null=True)
 
     def __str__(self):
