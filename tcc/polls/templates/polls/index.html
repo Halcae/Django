@@ -148,36 +148,13 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td><a>Java</a></td>
-                    <td>150 XP</td>
+                 {% for c in cursos %}
+                    <tr>
+                    <td><a>{{ c.curso.nome }}</a></td>
+                    <td>{{ c.curso.experiencia_curso }} XP</td>
                     <td>2 Badges</td>
                   </tr>
-                  <tr>
-                    <td><a>Python</a></td>
-                    <td>140 XP</td>
-                    <td>1 Badge</td>
-                  </tr>
-                  <tr>
-                    <td><a>C#</a></td>
-                    <td>140 XP</td>
-                    <td>1 Badge</td>
-                  </tr>
-                  <tr>
-                    <td><a>C#</a></td>
-                    <td>140 XP</td>
-                    <td>1 Badge</td>
-                  </tr>
-                  <tr>
-                    <td><a>C#</a></td>
-                    <td>140 XP</td>
-                    <td>1 Badge</td>
-                  </tr>
-                  <tr>
-                    <td><a>C#</a></td>
-                    <td>140 XP</td>
-                    <td>1 Badge</td>
-                  </tr>
+                 {% endfor %}
                 </tbody>
               </table>
               <a href="cursos.html" class="expanded button alert">Explore Mais Cursos!</a>
@@ -187,7 +164,7 @@
             <div class="callout"><!-- S  -->
               <div class="alert-box success">
                 <p class="text-center">Ranking</p>
-              </div><!--<p><img src="http://placehold.it/400x370&text=Pegasi B" alt="image of a planet called Pegasi B"></p>-->
+              </div>
               <table>
                 <thead>
                   <tr>
@@ -198,42 +175,16 @@
                   </tr>
                 </thead>
                 <tbody>
+                {% for r in object_list %}
                   <tr>
                     <td>1</td>
-                    <td>H.P Lovecraft</td>
+                    <td>{{ r.nome }}</td>
                     <td>66</td>
                     <td>50</td>
                   </tr>
-                  <tr>
-                    <td>2</td>
-                    <td>Stephen King</td>
-                    <td>65</td>
-                    <td>45</td>
-                  </tr>
-                  <tr>
-                    <td>3</td>
-                    <td>Edgar Alan Poe</td>
-                    <td>60</td>
-                    <td>78</td>
-                  </tr>
-                  <tr>
-                    <td>4</td>
-                    <td>Alan Moore</td>
-                    <td>59</td>
-                    <td>14</td>
-                  </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>Neil Gaiman</td>
-                    <td>45</td>
-                    <td>74</td>
-                  </tr>
-                  <tr>
-                    <td>6</td>
-                    <td>Richard Garfield</td>
-                    <td>45</td>
-                    <td>56</td>
-                  </tr>
+                {% empty %}
+                  <li>Sem itens na lista.</li>
+                {% endfor %}
                 </tbody>
               </table>
               <a href="ranking.html" class="expanded button success">Confira o Ranking Completo!</a>
